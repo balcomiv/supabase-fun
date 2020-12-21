@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "projects": {
+    "slack-clone": {
+      "projectType": "application",
+      "root": "apps/slack-clone",
+      "sourceRoot": "apps/slack-clone/src",
+      "prefix": "supabase-fun",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/slack-clone",
+            "index": "apps/slack-clone/src/index.html",
+            "main": "apps/slack-clone/src/main.ts",
+            "polyfills": "apps/slack-clone/src/polyfills.ts",
+            "tsConfig": "apps/slack-clone/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/slack-clone/src/favicon.ico",
+              "apps/slack-clone/src/assets"
+            ],
+            "styles": ["apps/slack-clone/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/slack-clone/src/environments/environment.ts",
+                  "with": "apps/slack-clone/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "slack-clone:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "slack-clone:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "slack-clone:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/slack-clone/tsconfig.app.json",
+              "apps/slack-clone/tsconfig.spec.json",
+              "apps/slack-clone/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/slack-clone/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/slack-clone"],
+          "options": {
+            "jestConfig": "apps/slack-clone/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "slack-clone-e2e": {
+      "root": "apps/slack-clone-e2e",
+      "sourceRoot": "apps/slack-clone-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/slack-clone-e2e/cypress.json",
+            "tsConfig": "apps/slack-clone-e2e/tsconfig.e2e.json",
+            "devServerTarget": "slack-clone:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "slack-clone:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/slack-clone-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/slack-clone-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "slack-clone"
+}
