@@ -96,3 +96,25 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+## Storybook
+
+### Helpful Commands
+
+### Helpful Links
+
+- https://medium.com/front-end-weekly/creating-a-storybook-instance-including-stories-from-multiple-libraries-in-a-nrwl-nx-workspace-89009a2bddf7
+
+- https://medium.com/storybookjs/storybook-composition-af0da9084fba
+
+- https://medium.com/storybookjs/how-to-combine-multiple-storybooks-into-one-d9b4107d869
+
+- https://github.com/storybookjs/storybook/blob/next/CHANGELOG.md#610-alpha22-october-10-2020
+
+- https://github.com/storybookjs/storybook/pull/12565
+
+## NX
+
+### Helpful Commands
+
+- npx nx g @nrwl/workspace:lib data

@@ -29,6 +29,9 @@
     "slack-clone-e2e": {
       "tags": [],
       "implicitDependencies": ["slack-clone"]
+    },
+    "slack-clone-ui": {
+      "tags": []
     }
   }
 }

@@ -117,6 +117,31 @@
           }
         }
       }
+    },
+    "slack-clone-ui": {
+      "root": "libs/slack-clone/ui",
+      "sourceRoot": "libs/slack-clone/ui/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/slack-clone/ui/tsconfig.lib.json",
+              "libs/slack-clone/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/slack-clone/ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/slack-clone/ui"],
+          "options": {
+            "jestConfig": "libs/slack-clone/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
